@@ -1,30 +1,28 @@
 package Starting_Threads;
 
-class Runner extends Thread {
-    public void run() {
+class RunnerRunnable implements Runnable {
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Hello" + i);
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Hello: " + i + " Thread: " + Thread.currentThread().getName());
 
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-                //throw new RuntimeException(e);
-
                 e.printStackTrace();
             }
         }
     }
-
 }
 
+public class ApplicationRunnable {
 
-public class App1 {
     public static void main(String[] args) {
-        Runner runner1 = new Runner();
-        runner1.start();
-
-        Runner runner2 = new Runner();
-        runner2.start();
+        Thread thread1 = new Thread(new RunnerRunnable());
+        Thread thread2 = new Thread(new RunnerRunnable());
+        thread1.start();
+        thread2.start();
     }
+
 }
