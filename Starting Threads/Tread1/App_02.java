@@ -1,5 +1,3 @@
-package Starting_Threads;
-
 class RunnerRunnable implements Runnable {
 
     @Override
